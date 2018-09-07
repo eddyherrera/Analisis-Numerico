@@ -1,0 +1,222 @@
+%--------------------------------------------------------------------
+% Formato para talleres y quices
+% Eddy Herrera Daza M.Sc.
+% herrera.eddy@gmail.com
+%--------------------------------------------------------------------
+%--------------------------------------------------------------------
+\documentclass[12pt,letterpaper]{exam}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=4cm]{geometry}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel} % Escribir en espanol
+\decimalpoint
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm, dsfont}
+\usepackage[mathscr]{euscript}
+\usepackage{ae,aecompl}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg} %solo para PDFLaTeX
+\usepackage{float} %para tener manejo de ubicacion de tablas y graficas
+\usepackage{subfigure} %varias figura en una
+% Paquete para generar varias columnas y filas
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+%----modificar las caption-----
+\usepackage[font=small,labelfont=small,labelfont=bf,textfont=it]{caption}
+%--------------------------------------------------------------------
+%\newcommand{\base}[1]{\underline{\hspace{#1}}}
+%--------------------------------------------------------------------
+\newcommand{\uni}{Análisis Numérico}
+\newcommand{\fac}{Interpolación}
+\newcommand{\dep}{Eddy Herrera Daza}
+%\newcommand{\mat}{Análisis Numérico } %Materia
+%\newcommand{\tema}{Parcial I } %Tipo y Número de Quiz
+%\newcommand{\autor}{Eddy Herrera Daza}
+%\newcommand{\fecha}{Agosto 2018}
+\newcommand{\espacio}[1]{\vspace{#1}}
+%---------------------------------------------------------------------
+%\boxedpoints
+%\pointname{}
+%\bonuspointname{(bono)}
+%\extrawidth{0.8in}
+%%\extrafootheight{1.25ino
+%\extraheadheight{-0.1in}
+%\pagestyle{headandfoot}
+%\footrule
+%\headrule
+%\firstpageheader{}{}{}
+%\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+%\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.5pt}   % default=0pt (no line)
+
+%---------------------------------------------------------------------------
+\begin{document}
+\begin{tabular}{lr}
+    \multirow{2}{*} {\includegraphics[height=1.0cm]{logo}}
+    	& \hspace{1.5 cm} {\textbf{\uni}} \\	
+    	& {\textbf{\fac}} \\
+   	& {\textbf{\dep}} 
+%    	& {\textbf{\mat: \tema}} \\
+%    	& {\textit{\autor}}\\
+%		& {\textit{\fecha}}
+\end{tabular}\\\\
+%\base{19.5cm}\\ \\
+%\textbf{Nombre}: \base{6.5cm} \textbf{carrera}: \base{5.4cm} \textbf{Calificación}: \base{2cm} \\
+%\base{19.5cm}
+%cuerpo del documento
+
+%
+%\begin{center}
+%\textbf{Recomendaciones }
+%\end{center}
+%\begin{enumerate}[$\bullet$]
+%\item No se resuelven preguntas del contenido a evaluar. No se permite el uso del celular, ni compartir mensajes
+%\item El uso del equipo de computo es personal e intransferible.
+%\item \underline{Tiene una duración máxima de $100$
+% \textit{minutos}}
+%\end{enumerate}
+%\base{19.5cm}
+
+%\begin{center}
+%\shadowbox{Estadistica}
+%\end{center}
+
+\section{Interpolación}
+En general, el problema de la interpolación consiste en determinar una aproximación $f(x)$ en un punto $x_{i}$ del dominio de $f(x)$, a partir del conjunto  ${(x_{i},y_{i})}$ de valores conocidos o en sus vecindades\\
+Particularmente, la interpolación polinómica consiste en determinar $f(x_{i})$ a partir de un polinomio $P(x)$ de interpolación de grado menor o igual que $n$ que pasa por los $n+1$ puntos
+
+\begin{enumerate}
+
+\item
+Dados los $n+1$ puntos distintos $(x_{i},y_{i})$ el polinomio interpolante que incluye a todos los puntos es único\\
+\textbf{Solución}\\
+Sean $P(x)$ y $Q(x)$ dos polinomios interpolante de grado menor o igual que $n$, que pasa por los $n+1$ puntos distintos. Luego para todo $i=1,2,...,n+1$ se tiene que:
+\begin{center}
+	$P(x_{i})=y_{i}$\\
+	$Q(x_{i})=y_{i}$
+\end{center}
+Sea $h(x)=P(x)-Q(x)$ una función polinómica de grado menor o igual que $n$. Donde para los $x_{i}$ se tiene que: $h(x_{i})=P(x_{i})-Q(x_{i})$ como se tiene que $P(x)$ y $Q(x)$ son dos polinomios distintos interpolantes entonces, $h(x_{i})=y_{i}-y_{i}=0$ para todo $i=1,2,...,n+1$ es decir que la función polinómica $h(x)$ de grado menor o igual que $n$ tiene $n+1$ raíces, lo que contradice el \textbf{teorema fundamental del Algebra} Por lo tanto, $h(x)$ debe ser el polinomio cero, por lo tanto, $\forall x_{i}, P(x_{i})-Q(x_{i})=0$ luego,$ P(x_{i})=Q(x_{i}) \forall i=1,2,...,n+1$
+
+
+\item
+Considere el comportamiento de gases no ideales se describe a menudo con la ecuación virial de estado. los siguientes datos para el nitrógeno $N_{2}$
+
+
+\begin{center}
+	\begin{tabular}{|r|r|r|r|r|r|r|r|}
+		\hline
+		\rowcolor{blue} {T(K)} & 100 & 200 & 300 & 400 & 450 & 500 & 600\\
+		\hline
+		\rowcolor[gray]{0.9} $B(cm^{3})/mol$ & -160 & -35 & -4.2 & 9.0 &  & 16.9 & 21.3 \\
+		
+		\hline
+	\end{tabular}
+\end{center}
+Donde T es la temperatura $[K]$ y B es el segundo coeficiente virial.\\
+El comportamiento de gases no ideales se describe a menudo con la ecuación virial de estado
+\begin{equation}
+\dfrac{PV}{RT}=1+\dfrac{B}{V}+\dfrac{C}{V^{2}}+....,
+\end{equation}
+Donde P es la presión, V el volumen molar del gas, T es la temperatura Kelvin y R es la constante de gas ideal.Los coeficientes $B = B(T)$, $C =
+C(T)$, son el segundo y tercer coeficiente virial, respectivamente. En la práctica se usa la serie truncada para aproximar
+\begin{equation}
+\dfrac{PV}{RT}=1+\dfrac{B}{V}
+\end{equation}
+En la siguiente figura se muestra como se distribuye la variable $B$ a lo largo de la temperatura
+\begin{center} 
+	\begin{figure}[h]
+		\centering%
+		\includegraphics[width=7cm,height=5cm]{I1}
+		\caption{Comportamiento del $N_{2}$} 
+	\end{figure}
+\end{center}
+
+\begin{enumerate}
+	\item 
+	Determine un polinomio interpolante para este caso:\\
+	Teniendo en cuenta que se tomaron cinco puntos el polinomio resultante es
+	\begin{equation}
+	-520.1 + 5.406917x - 0.02174708x^{2} + 3.955833e-05x^{3} -  
+	2.679167e-08x^{4} 
+	\end{equation}
+	\begin{center} 
+		\begin{figure}[h]
+			\centering%
+			\includegraphics[width=7cm,height=5cm]{I2}
+			\caption{Ajuste Polinómico del $N_{2}$} 
+		\end{figure}
+	\end{center}
+	\item
+	Utilizando el resultado anterior calcule el segundo y tercer coeficiente virial a 450K.\\
+	Para responder
+	la pregunta, usando interpolación polinomial, construimos un
+	polinomio P que pase por los seis puntos y luego se evalua en 450
+	\item
+	Grafique los puntos y el polinomio que ajusta
+	\item
+	Utilice la interpolación de Lagrange y escriba el polinomio interpolante 
+	\item
+	Grafique los puntos y el polinomio interpolante de Lagrange 
+	\item
+	¿Cuál es el segundo y tercer coeficiente virial a 450K?. con el método de Lagrange
+	\item
+	Compare su resultado con la serie truncada (modelo teórico), cuál de las tres aproximaciones es mejor por qué?
+	
+\end{enumerate}
+
+
+¿Cuál es el segundo coeficiente virial a 450K?.  de la tabla (ya veremos
+cómo), tal y como se muestra en la figura (I.1)
+	
+ 
+ 
+ 
+ 
+
+ 
+    
+            
+   
+      
+     
+     	
+ 	 
+  
+  
+
+
+
+
+
+ 
+ 
+ 	
+\end{enumerate}
+
+
+
+
+	
+
+
+
+\end{document}
+%NOTA:
+%GUARDAR EN UN ARCHIVO, EN UNA CARPETA LLAMADA PARCIAL_ESTADISTICA: CON SU NOMBRE COMPLETO
+%\vspace{0.1in}
+%--------------------------------------------------------------------------------------------------------------------%
+
+%--------------------------------------------------------------------------------------------------------------------%
+
+%\vspace{0.1in}
+%--------------------------------------------------------------------------------------------------------------------%
+
+%--------------------------------------------------------------------------------------------------------------------%
+
+
