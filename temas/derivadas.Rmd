@@ -1,0 +1,30 @@
+---
+title: "Derivadas"
+author: "Eddy Herrera Daza"
+date: "25 de septiembre de 2018"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Diferencias hacia adelante
+$f(x)~ (f(x+h)-f(x))/h$
+```{r,echo=T}
+exp1<-expression(1+x+exp(x))
+exp2<-function(x) 1+x+2*x^2
+D(exp1,"x")
+```
+
+
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+
